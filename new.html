@@ -139,6 +139,49 @@
             backdrop-filter: blur(10px);
             box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
         }
+
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .parallax-section {
+                background-attachment: scroll;
+                height: 18rem;
+            }
+
+            section[style*="img3.jpg"] {
+                height: auto;
+                min-height: 85svh;
+                padding-top: 6rem;
+                padding-bottom: 3rem;
+            }
+
+            section[style*="img3.jpg"] h1 {
+                font-size: 2.25rem;
+                line-height: 1.2;
+            }
+
+            section[style*="img3.jpg"] p {
+                font-size: 1rem;
+            }
+
+            .modal-content {
+                max-width: 92vw;
+                max-height: 82vh;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #about h2,
+            #tours h2,
+            #gallery h2,
+            #contact h2,
+            #owner h2 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+        }
     </style>
     
     <!-- Structured Data for SEO -->
@@ -169,7 +212,7 @@
     <!-- Header & Navigation Bar -->
     <header id="main-header" class="bg-white shadow-sm sticky top-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold gradient-text flex items-center gap-2">
+            <a href="#" class="text-lg sm:text-2xl font-bold gradient-text flex items-center gap-2">
                 <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                 </svg>
@@ -225,7 +268,7 @@
     <section class="relative bg-cover bg-center h-screen flex items-center justify-center text-center" style="background-image: url('img3.jpg');">
         <div class="absolute inset-0 hero-overlay"></div>
         <div class="relative z-10 text-white p-6 rounded-lg max-w-4xl mx-auto">
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-2xl animate-fade-in-up">
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-2xl animate-fade-in-up">
                 Your Spiritual Journey to <span class="text-sky-300">Aadi Kailash</span>
             </h1>
             <p class="text-xl sm:text-2xl mb-10 font-light drop-shadow-lg animate-fade-in-up" style="animation-delay: 0.2s;">
@@ -284,8 +327,8 @@
                     <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl">
                         <img src="img1.jpg" alt="Aadi Kailash Mountain View" class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-sky-600 rounded-2xl -z-10"></div>
-                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-sky-200 rounded-2xl -z-10"></div>
+                    <div class="hidden sm:block absolute -bottom-6 -left-6 w-32 h-32 bg-sky-600 rounded-2xl -z-10"></div>
+                    <div class="hidden sm:block absolute -top-6 -right-6 w-32 h-32 bg-sky-200 rounded-2xl -z-10"></div>
                 </div>
             </div>
         </div>
@@ -392,6 +435,15 @@
                     <button class="gallery-item aspect-square overflow-hidden rounded-xl shadow-lg" onclick="openModal('yatra4.jpg')" aria-label="View recent yatra photo 4">
                         <img src="yatra4.jpg" alt="Recent Aadi Kailash Yatra - Pilgrims Journey" class="w-full h-full object-cover">
                     </button>
+                    <button class="gallery-item aspect-square overflow-hidden rounded-xl shadow-lg" onclick="openModal('yatra5.jpg')" aria-label="View recent yatra photo 5">
+                        <img src="yatra5.jpg" alt="Recent Aadi Kailash Yatra - Devotional Stop" class="w-full h-full object-cover">
+                    </button>
+                    <button class="gallery-item aspect-square overflow-hidden rounded-xl shadow-lg" onclick="openModal('yatra6.jpg')" aria-label="View recent yatra photo 6">
+                        <img src="yatra6.jpg" alt="Recent Aadi Kailash Yatra - Himalayan Trail" class="w-full h-full object-cover">
+                    </button>
+                    <button class="gallery-item aspect-square overflow-hidden rounded-xl shadow-lg" onclick="openModal('yatra7.jpg')" aria-label="View recent yatra photo 7">
+                        <img src="yatra7.jpg" alt="Recent Aadi Kailash Yatra - Sacred Mountain View" class="w-full h-full object-cover">
+                    </button>
                 </div>
             </div>
             
@@ -416,7 +468,7 @@
     <!-- Image Modal -->
     <dialog id="imageModal" class="modal max-w-[95vw] max-h-[95vh] bg-transparent border-0 p-0">
         <div class="relative">
-            <button class="absolute -top-12 right-0 text-white text-5xl font-bold cursor-pointer hover:text-sky-400 transition z-10" onclick="closeModal()" aria-label="Close modal">&times;</button>
+            <button class="absolute top-2 right-2 sm:-top-12 sm:right-0 text-white text-4xl sm:text-5xl font-bold cursor-pointer hover:text-sky-400 transition z-10" onclick="closeModal()" aria-label="Close modal">&times;</button>
             <img class="modal-content max-w-full max-h-[90vh] rounded-lg shadow-2xl" id="modalImage" alt="Aadi Kailash view">
         </div>
     </dialog>
@@ -505,7 +557,7 @@
             </div>
             
             <!-- Success Message -->
-            <div id="success-message" class="hidden fixed top-24 left-1/2 transform -translate-x-1/2 w-full max-w-md p-6 bg-green-500 text-white text-center rounded-2xl shadow-2xl z-50 animate-fade-in-up">
+            <div id="success-message" class="hidden fixed top-20 sm:top-24 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] sm:w-full max-w-md p-6 bg-green-500 text-white text-center rounded-2xl shadow-2xl z-50 animate-fade-in-up">
                 <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
@@ -618,7 +670,7 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-sky-600 hover:bg-sky-700 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none z-50">
+    <button id="back-to-top" class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-sky-600 hover:bg-sky-700 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none z-50">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>

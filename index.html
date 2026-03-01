@@ -18,8 +18,75 @@
     <script src="https://cdn.tailwindcss.com"></script>
     
     <style>
+        :root {
+            --travel-deep: #0f766e;
+            --travel-mid: #0d9488;
+            --travel-soft: #ccfbf1;
+            --travel-sand: #fff4df;
+            --travel-sunset: #f59e0b;
+            --travel-shadow: rgba(13, 148, 136, 0.28);
+        }
+
         body {
             font-family: 'Inter', sans-serif;
+            background: linear-gradient(180deg, #f4fffd 0%, #fffaf0 100%);
+        }
+
+        #about,
+        #gallery,
+        #owner {
+            background: linear-gradient(180deg, #ffffff 0%, #f7fffd 100%);
+        }
+
+        #tours,
+        #contact {
+            background: linear-gradient(135deg, #f2fffb 0%, #e6fbf5 45%, #fff6e8 100%);
+        }
+
+        .text-sky-600 {
+            color: var(--travel-mid) !important;
+        }
+
+        .text-sky-300 {
+            color: #99f6e4 !important;
+        }
+
+        .bg-sky-600 {
+            background-color: var(--travel-mid) !important;
+        }
+
+        .bg-sky-100,
+        .bg-sky-200,
+        .bg-sky-50 {
+            background-color: var(--travel-soft) !important;
+        }
+
+        .hover\:text-sky-600:hover {
+            color: var(--travel-deep) !important;
+        }
+
+        .hover\:bg-sky-700:hover {
+            background-color: var(--travel-deep) !important;
+        }
+
+        .hover\:bg-sky-50:hover {
+            background-color: #e8fff9 !important;
+        }
+
+        .hover\:shadow-sky-500\/50:hover {
+            box-shadow: 0 12px 34px var(--travel-shadow) !important;
+        }
+
+        .from-sky-600,
+        .via-sky-500,
+        .to-blue-600 {
+            --tw-gradient-from: #0f766e var(--tw-gradient-from-position) !important;
+            --tw-gradient-to: rgb(15 118 110 / 0) var(--tw-gradient-to-position) !important;
+            --tw-gradient-stops: var(--tw-gradient-from), #0d9488 var(--tw-gradient-via-position), var(--tw-gradient-to) !important;
+        }
+
+        .to-sky-400 {
+            --tw-gradient-to: #f59e0b var(--tw-gradient-to-position) !important;
         }
         
         ::-webkit-scrollbar {
@@ -29,11 +96,11 @@
             background: #f1f5f9;
         }
         ::-webkit-scrollbar-thumb {
-            background: linear-gradient(180deg, #0ea5e9, #0284c7);
+            background: linear-gradient(180deg, #0d9488, #0f766e);
             border-radius: 5px;
         }
         ::-webkit-scrollbar-thumb:hover {
-            background: linear-gradient(180deg, #0284c7, #0369a1);
+            background: linear-gradient(180deg, #0f766e, #115e59);
         }
         
         @keyframes fadeInUp {
@@ -80,29 +147,31 @@
         }
         
         .hero-overlay {
-            background: linear-gradient(135deg, rgba(2, 132, 199, 0.7) 0%, rgba(15, 23, 42, 0.8) 100%);
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.62) 0%, rgba(15, 23, 42, 0.76) 55%, rgba(245, 158, 11, 0.48) 100%);
         }
         
         .glass-effect {
-            background: rgba(255, 255, 255, 0.1);
+            background: rgba(255, 255, 255, 0.14);
             backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.28);
         }
         
         .gradient-text {
-            background: linear-gradient(135deg, #0ea5e9 0%, #0284c7 100%);
+            background: linear-gradient(135deg, var(--travel-deep) 0%, var(--travel-mid) 52%, var(--travel-sunset) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
         }
         
         .card-hover {
-            transition: all 0.3s ease;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+            border: 1px solid rgba(15, 118, 110, 0.1);
         }
         
         .card-hover:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(14, 165, 233, 0.3);
+            border-color: rgba(15, 118, 110, 0.28);
+            box-shadow: 0 20px 42px var(--travel-shadow);
         }
         
         .parallax-section {
@@ -110,6 +179,15 @@
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+            isolation: isolate;
+        }
+
+        .parallax-section::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(13, 148, 136, 0.2) 0%, rgba(15, 23, 42, 0.25) 100%);
+            z-index: 0;
         }
         
         .modal {
@@ -126,18 +204,103 @@
         }
         
         .gallery-item {
+            position: relative;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            border: 1px solid rgba(13, 148, 136, 0.18);
+            box-shadow: 0 16px 28px rgba(2, 132, 199, 0.16);
+        }
+
+        .gallery-item::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(15, 23, 42, 0) 25%, rgba(15, 23, 42, 0.38) 100%);
+            opacity: 0.6;
+            transition: opacity 0.35s ease;
+            pointer-events: none;
+        }
+
+        .gallery-item img {
+            transition: transform 0.55s ease, filter 0.45s ease;
+            filter: saturate(1.08) contrast(1.03);
         }
         
         .gallery-item:hover {
-            transform: scale(1.05);
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 20px 40px var(--travel-shadow);
+        }
+
+        .gallery-item:hover::after {
+            opacity: 0.2;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.14);
+            filter: saturate(1.24) contrast(1.08);
+        }
+
+        #about img,
+        #owner img {
+            transition: transform 0.45s ease, filter 0.35s ease, box-shadow 0.35s ease;
+            filter: saturate(1.06) contrast(1.04);
+        }
+
+        #about img:hover,
+        #owner img:hover {
+            transform: scale(1.04);
+            filter: saturate(1.2) contrast(1.08);
+            box-shadow: 0 18px 35px rgba(15, 118, 110, 0.24);
         }
         
         .nav-scroll {
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.92);
             backdrop-filter: blur(10px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.12);
+            border-bottom: 1px solid rgba(13, 148, 136, 0.16);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                overflow-x: hidden;
+            }
+
+            .parallax-section {
+                background-attachment: scroll;
+                height: 18rem;
+            }
+
+            section[style*="img3.jpg"] {
+                height: auto;
+                min-height: 85svh;
+                padding-top: 6rem;
+                padding-bottom: 3rem;
+            }
+
+            section[style*="img3.jpg"] h1 {
+                font-size: 2.25rem;
+                line-height: 1.2;
+            }
+
+            section[style*="img3.jpg"] p {
+                font-size: 1rem;
+            }
+
+            .modal-content {
+                max-width: 92vw;
+                max-height: 82vh;
+            }
+        }
+
+        @media (max-width: 640px) {
+            #about h2,
+            #tours h2,
+            #gallery h2,
+            #contact h2,
+            #owner h2 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
         }
     </style>
     
@@ -169,7 +332,7 @@
     <!-- Header & Navigation Bar -->
     <header id="main-header" class="bg-white shadow-sm sticky top-0 z-50 transition-all duration-300">
         <nav class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <a href="#" class="text-2xl font-bold gradient-text flex items-center gap-2">
+            <a href="#" class="text-lg sm:text-2xl font-bold gradient-text flex items-center gap-2">
                 <svg class="w-8 h-8 text-sky-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z"></path>
                 </svg>
@@ -225,7 +388,7 @@
     <section class="relative bg-cover bg-center h-screen flex items-center justify-center text-center" style="background-image: url('img3.jpg');">
         <div class="absolute inset-0 hero-overlay"></div>
         <div class="relative z-10 text-white p-6 rounded-lg max-w-4xl mx-auto">
-            <h1 class="text-5xl sm:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-2xl animate-fade-in-up">
+            <h1 class="text-4xl sm:text-5xl lg:text-7xl font-extrabold mb-6 leading-tight drop-shadow-2xl animate-fade-in-up">
                 Your Spiritual Journey to <span class="text-sky-300">Aadi Kailash</span>
             </h1>
             <p class="text-xl sm:text-2xl mb-10 font-light drop-shadow-lg animate-fade-in-up" style="animation-delay: 0.2s;">
@@ -284,8 +447,8 @@
                     <div class="aspect-square rounded-2xl overflow-hidden shadow-2xl">
                         <img src="img1.jpg" alt="Aadi Kailash Mountain View" class="w-full h-full object-cover">
                     </div>
-                    <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-sky-600 rounded-2xl -z-10"></div>
-                    <div class="absolute -top-6 -right-6 w-32 h-32 bg-sky-200 rounded-2xl -z-10"></div>
+                    <div class="hidden sm:block absolute -bottom-6 -left-6 w-32 h-32 bg-sky-600 rounded-2xl -z-10"></div>
+                    <div class="hidden sm:block absolute -top-6 -right-6 w-32 h-32 bg-sky-200 rounded-2xl -z-10"></div>
                 </div>
             </div>
         </div>
@@ -392,6 +555,15 @@
                     <button class="gallery-item aspect-square overflow-hidden rounded-xl shadow-lg" onclick="openModal('yatra4.jpg')" aria-label="View recent yatra photo 4">
                         <img src="yatra4.jpg" alt="Recent Aadi Kailash Yatra - Pilgrims Journey" class="w-full h-full object-cover">
                     </button>
+                    <button class="gallery-item aspect-square overflow-hidden rounded-xl shadow-lg" onclick="openModal('yatra5.jpg')" aria-label="View recent yatra photo 5">
+                        <img src="yatra5.jpg" alt="Recent Aadi Kailash Yatra - Devotional Stop" class="w-full h-full object-cover">
+                    </button>
+                    <button class="gallery-item aspect-square overflow-hidden rounded-xl shadow-lg" onclick="openModal('yatra6.jpg')" aria-label="View recent yatra photo 6">
+                        <img src="yatra6.jpg" alt="Recent Aadi Kailash Yatra - Himalayan Trail" class="w-full h-full object-cover">
+                    </button>
+                    <button class="gallery-item aspect-square overflow-hidden rounded-xl shadow-lg" onclick="openModal('yatra7.jpg')" aria-label="View recent yatra photo 7">
+                        <img src="yatra7.jpg" alt="Recent Aadi Kailash Yatra - Sacred Mountain View" class="w-full h-full object-cover">
+                    </button>
                 </div>
             </div>
             
@@ -416,7 +588,7 @@
     <!-- Image Modal -->
     <dialog id="imageModal" class="modal max-w-[95vw] max-h-[95vh] bg-transparent border-0 p-0">
         <div class="relative">
-            <button class="absolute -top-12 right-0 text-white text-5xl font-bold cursor-pointer hover:text-sky-400 transition z-10" onclick="closeModal()" aria-label="Close modal">&times;</button>
+            <button class="absolute top-2 right-2 sm:-top-12 sm:right-0 text-white text-4xl sm:text-5xl font-bold cursor-pointer hover:text-sky-400 transition z-10" onclick="closeModal()" aria-label="Close modal">&times;</button>
             <img class="modal-content max-w-full max-h-[90vh] rounded-lg shadow-2xl" id="modalImage" alt="Aadi Kailash view">
         </div>
     </dialog>
@@ -505,7 +677,7 @@
             </div>
             
             <!-- Success Message -->
-            <div id="success-message" class="hidden fixed top-24 left-1/2 transform -translate-x-1/2 w-full max-w-md p-6 bg-green-500 text-white text-center rounded-2xl shadow-2xl z-50 animate-fade-in-up">
+            <div id="success-message" class="hidden fixed top-20 sm:top-24 left-1/2 transform -translate-x-1/2 w-[calc(100%-2rem)] sm:w-full max-w-md p-6 bg-green-500 text-white text-center rounded-2xl shadow-2xl z-50 animate-fade-in-up">
                 <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                 </svg>
@@ -618,7 +790,7 @@
     </footer>
 
     <!-- Back to Top Button -->
-    <button id="back-to-top" class="fixed bottom-8 right-8 bg-sky-600 hover:bg-sky-700 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none z-50">
+    <button id="back-to-top" class="fixed bottom-4 right-4 sm:bottom-8 sm:right-8 bg-sky-600 hover:bg-sky-700 text-white w-12 h-12 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 opacity-0 pointer-events-none z-50">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 10l7-7m0 0l7 7m-7-7v18"></path>
         </svg>
