@@ -6,11 +6,22 @@
     <meta name="description" content="Embark on a sacred Aadi Kailash Yatra pilgrimage. 8-day spiritual journey through the Himalayas with Om Parvat, Parvati Sarovar, and ancient temples. Book your divine trek today.">
     <meta name="keywords" content="Aadi Kailash, Adi Kailash Yatra, Om Parvat, Himalayan pilgrimage, spiritual trek, Uttarakhand tours, Kailash Mansarovar">
     <meta name="author" content="Panchachuli Travellers">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="theme-color" content="#0d9488">
     <meta property="og:title" content="Aadi Kailash Yatra Tours - Sacred Himalayan Pilgrimage">
     <meta property="og:description" content="Experience the divine 8-day Aadi Kailash Yatra. Visit Om Parvat, sacred lakes, and ancient temples in the majestic Himalayas.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://aadikailash.com">
+    <meta property="og:url" content="https://aadikailash.com/">
+    <meta property="og:site_name" content="Panchachuli Travellers">
+    <meta property="og:locale" content="en_IN">
+    <meta property="og:image" content="https://aadikailash.com/img3.jpg">
+    <meta property="og:image:alt" content="Aadi Kailash mountain landscape during yatra">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Aadi Kailash Yatra Tours - Sacred Himalayan Pilgrimage">
+    <meta name="twitter:description" content="Experience the divine 8-day Aadi Kailash Yatra through Om Parvat, Parvati Sarovar, and sacred Himalayan routes.">
+    <meta name="twitter:image" content="https://aadikailash.com/img3.jpg">
     <title>Aadi Kailash Yatra Tours | Sacred Himalayan Pilgrimage - Panchachuli Travellers</title>
+    <link rel="canonical" href="https://aadikailash.com/">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -307,23 +318,45 @@
     <!-- Structured Data for SEO -->
     <script type="application/ld+json">
     {
-      "@context": "https://schema.org",
-      "@type": "TouristTrip",
-      "name": "Aadi Kailash Yatra",
-      "description": "8-day sacred pilgrimage to Aadi Kailash in the Himalayas of Uttarakhand, India",
-      "provider": {
-        "@type": "TravelAgency",
-        "name": "Panchachuli Travellers",
-        "telephone": "+91-7351414267",
-        "email": "chandusingh82209@gmail.com"
-      },
-      "tourBookingPage": "https://aadikailash.com/pricing.html",
-      "duration": "P8D",
-      "offers": {
-        "@type": "Offer",
-        "price": "28000",
-        "priceCurrency": "INR"
-      }
+            "@context": "https://schema.org",
+            "@graph": [
+                {
+                    "@type": "TravelAgency",
+                    "@id": "https://aadikailash.com/#travelagency",
+                    "name": "Panchachuli Travellers",
+                    "url": "https://aadikailash.com/",
+                    "telephone": "+91-7351414267",
+                    "email": "chandusingh82209@gmail.com"
+                },
+                {
+                    "@type": "WebSite",
+                    "@id": "https://aadikailash.com/#website",
+                    "url": "https://aadikailash.com/",
+                    "name": "Aadi Kailash Yatra",
+                    "publisher": {
+                        "@id": "https://aadikailash.com/#travelagency"
+                    }
+                },
+                {
+                    "@type": "TouristTrip",
+                    "@id": "https://aadikailash.com/#trip",
+                    "name": "Aadi Kailash Yatra",
+                    "description": "8-day sacred pilgrimage to Aadi Kailash in the Himalayas of Uttarakhand, India",
+                    "url": "https://aadikailash.com/",
+                    "image": "https://aadikailash.com/img3.jpg",
+                    "provider": {
+                        "@id": "https://aadikailash.com/#travelagency"
+                    },
+                    "tourBookingPage": "https://aadikailash.com/pricing.html",
+                    "duration": "P8D",
+                    "offers": {
+                        "@type": "Offer",
+                        "price": "28000",
+                        "priceCurrency": "INR",
+                        "url": "https://aadikailash.com/pricing.html"
+                    }
+                }
+            ]
     }
     </script>
 </head>
